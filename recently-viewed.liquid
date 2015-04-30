@@ -1,0 +1,26 @@
+<h6 class="block-title" style="display: none;">Recently Viewed</h6>
+<ul id="recently-viewed-products" class="product_list_widget" style="display: none;"></ul>
+
+{% raw %}
+<script id="recently-viewed-product-template"  type="text/x-jquery-tmpl">
+  <li id="product-${handle}" class="product">
+     <a href="${url}" title="${title}"> 
+        <img width="90" height="90" src="${Shopify.Products.resizeImage(featured_image, "medium")}" alt=""/> 
+        <span class="product-title">${title}</span> 
+     </a> 
+     <div class="star-rating" title="Rated 5.00 out of 5">
+        <span style="width:100%">
+            <strong class="rating">5.00
+            </strong> out of 5
+        </span>
+     </div> 
+     <span class="amount">{{if price_varies}}From {{/if}}${Shopify.formatMoney(price)}</span>
+</li>
+</script>
+{% endraw %}
+
+<script>
+    $(document).ready(function() {
+        Shopify.Products.showRecentlyViewed( { howManyToShow:5 } );
+    });
+</script>
